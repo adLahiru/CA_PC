@@ -16,13 +16,9 @@ import java.util.Scanner;
  * @author ASUS
  */
 public class SuperSaverPOSGroup_Found404 {
-    DB db;
-
-    public void db_load() {
-        this.db = new DB();
-    }
-
     public static void admin_activiity_options() {
+        DB dsf = DB.getInstance();
+
         Scanner scanner = new Scanner(System.in);
         System.out.println();
         System.out.print("Enter your option : ");
@@ -89,7 +85,6 @@ public class SuperSaverPOSGroup_Found404 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
         // Show Welocome message of shop
         String welcome = "Welcome to Found404 Pvt Ltd";
         int display_length = 70;
@@ -120,6 +115,15 @@ public class SuperSaverPOSGroup_Found404 {
 }
 
 class DB {
+    private static DB db;
+
+    public static DB getInstance() {
+        if (db == null) {
+            db = new DB();
+        }
+        return db;
+    }
+
     Items itemDb = new Items();
 
     public DB() {
@@ -202,5 +206,12 @@ class Items {
             this.quantity = quantity;
             System.out.println("hiiii");
         }
+    }
+}
+
+class Cashiers {
+
+    class Cashier {
+
     }
 }
