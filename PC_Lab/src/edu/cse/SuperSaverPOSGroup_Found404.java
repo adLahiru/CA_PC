@@ -133,8 +133,21 @@ public class SuperSaverPOSGroup_Found404 {
 }
 
 class DB {
+    Items itemDb = new Items();
+
+    public DB() {
+        itemDb.loadItemsFromCSV("./itemData.csv");
+    }
+}
+
+class Items {
     private List<Item> items = new ArrayList<>();
 
+    /**
+     * 
+     * 
+     * @param filePath a string containing file path
+     */
     public void loadItemsFromCSV(String filePath) {
         String line;
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -161,15 +174,34 @@ class DB {
         }
     }
 
+    public void addItem(Item item) {
+        items.add(item);
+    }
+
+    /**
+     * Find whether there is an item with the given item Id
+     * 
+     * @param itemId an integer
+     * @return null if item not found. Item if it is found
+     */
+    public Item findItem(int itemId) {
+        for (Item item : items) {
+            if (item.itemCode == itemId) {
+                return item;
+            }
+        }
+        return null;
+    }
+
     class Item {
-        private int itemCode;
-        private String name;
-        private double price;
+        int itemCode;
+        String name;
+        double price;
         double weight;
         Date manDate;
         Date expDate;
         String manufacturer;
-        private int quantity;
+        int quantity;
 
         public Item(int itemCode, String name, double price, double weight, Date manufacDate, Date expireDate,
                 String manufac, int quantity) {
@@ -182,9 +214,5 @@ class DB {
             this.manufacturer = manufac;
             this.quantity = quantity;
         }
-    }
-
-    public DB() {
-        loadItemsFromCSV("./itemData.csv");
     }
 }
