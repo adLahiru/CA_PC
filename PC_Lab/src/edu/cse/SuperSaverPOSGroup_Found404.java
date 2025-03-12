@@ -16,6 +16,12 @@ import java.util.Scanner;
  * @author ASUS
  */
 public class SuperSaverPOSGroup_Found404 {
+    DB db;
+
+    public void db_load() {
+        this.db = new DB();
+    }
+
     public static void admin_activiity_options() {
         Scanner scanner = new Scanner(System.in);
         System.out.println();
@@ -84,8 +90,6 @@ public class SuperSaverPOSGroup_Found404 {
      */
     public static void main(String[] args) {
 
-        DB db = new DB();
-
         // Show Welocome message of shop
         String welcome = "Welcome to Found404 Pvt Ltd";
         int display_length = 70;
@@ -111,28 +115,12 @@ public class SuperSaverPOSGroup_Found404 {
         }
         user_login();
 
-        // Scanner scanner = new Scanner(System.in);
-        // System.out.print("Enter username : ");
-        // String username = scanner.nextLine();
-        // System.out.print("Enter password : ");
-        // String password = scanner.nextLine();
-        //
-        // String username = "admin";
-        // String password = "admin";
-        // System.out.println();
-        //
-        // if (username.equals("admin") && password.equals("admin")){
-        // System.out.println("Hi "+username+" .");
-        // admin_activity();
-        // }else{
-        // System.out.println("Invalid username or password");
-        // }
-
     }
 
 }
 
 class DB {
+    private boolean isItemsLoad = false;
     Items itemDb = new Items();
 
     public DB() {
@@ -168,6 +156,7 @@ class Items {
                 Item item = new Item(Integer.parseInt(values[0]), values[1], Double.parseDouble(values[2]),
                         Double.parseDouble(values[3]), manufacDate, expireDate, values[6], Integer.parseInt(values[7]));
                 items.add(item);
+                isItemsLoad = true;
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -213,6 +202,7 @@ class Items {
             this.expDate = expireDate;
             this.manufacturer = manufac;
             this.quantity = quantity;
+            System.out.println("hiiii");
         }
     }
 }
