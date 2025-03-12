@@ -120,7 +120,6 @@ public class SuperSaverPOSGroup_Found404 {
 }
 
 class DB {
-    private boolean isItemsLoad = false;
     Items itemDb = new Items();
 
     public DB() {
@@ -156,7 +155,6 @@ class Items {
                 Item item = new Item(Integer.parseInt(values[0]), values[1], Double.parseDouble(values[2]),
                         Double.parseDouble(values[3]), manufacDate, expireDate, values[6], Integer.parseInt(values[7]));
                 items.add(item);
-                isItemsLoad = true;
             }
         } catch (IOException e) {
             e.printStackTrace();
