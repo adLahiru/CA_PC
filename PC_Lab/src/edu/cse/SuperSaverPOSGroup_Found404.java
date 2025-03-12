@@ -17,7 +17,7 @@ import java.util.Scanner;
  */
 public class SuperSaverPOSGroup_Found404 {
     public static void admin_activiity_options() {
-        DB dsf = DB.getInstance();
+        DB db = DB.getInstance();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println();
@@ -34,6 +34,23 @@ public class SuperSaverPOSGroup_Found404 {
                 break;
             }
             case 4: {
+                System.out.println("Enter item Code : ");
+                int itemCode = scanner.nextInt();
+                System.out.println("Enter item Name : ");
+                String name =scanner.nextLine();
+                System.out.println("Enter item Price : ");
+                double price =scanner.nextDouble();
+                System.out.println("Enter item Wwight : ");
+                double weight = scanner.nextDouble();
+                System.out.println("Enter item Code : ");
+                Date manDate =new Date(scanner.nextLine());
+                System.out.println("Enter item Code : ");
+                Date expDate=new Date(scanner.nextLine());
+                System.out.println("Enter item Code : ");;
+                String manufacturer = scanner.nextLine();
+                System.out.println("Enter item Code : ");
+                int quantity = scanner.nextInt();
+                db.itemDb.addItem();
                 break;
             }
             case 5: {
@@ -55,7 +72,7 @@ public class SuperSaverPOSGroup_Found404 {
         System.out.println("    1. Add Branch");
         System.out.println("    2. Add Cashiers");
         System.out.println("    3. Add Item Discount");
-        System.out.println("    4. Add Items");
+        System.out.println("    4. Add Item");
         System.out.println("    5. Generate a total revenue report");
         System.out.println("    6. Log out");
         admin_activiity_options();
